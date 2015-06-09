@@ -1,30 +1,24 @@
 <?php
-	echo $_GET['msg']."done";
-	echo $_GET['created'];
+	session_start();
 ?>
 <html>
 <head>
 	<script src="assets/js/angular.min.js"></script>
 	<script src="assets/js/angular-cookies.min.js"></script>
-	<script src="assets/js/jquery-2.1.3.min.js"></script>
-	
-	<script>
-		/*$(document).ready(
-			function(){
-				$('.updatedmsg').change(
-					function(){
-						//alert($('.updatedmsg').val());
-					}
-				);
-			}
-		);*/
-	</script>
+	<script src="assets/js/jquery-2.1.3.min.js"></script>	
 </head>
 <body>
 	<div ng-app="diaryapp" ng-controller="diarycontroller" >
 		<form action="check.php" method="get">
+			<div>
+				<span>
+					<?php echo "Edit ".$_GET['created']." 's notes"?>
+				</span>
+			</div>
 			<textarea class="updatedmsg" x-webkit-speech ><?php echo $_GET['msg']; ?></textarea>
-			<input type="button" ng-click="update()">
+			<div>
+				<input type="button" ng-click="update()" value="Go">
+			</div>
 		</form>
 		
 		<script>
@@ -37,6 +31,7 @@
 					//alert(loc);
 					$http.get(loc).success(function(vals){
 						alert(vals);
+						$window.location.href= 'index1.php';
 					});
 				}
 			}]);

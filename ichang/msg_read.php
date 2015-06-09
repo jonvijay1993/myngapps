@@ -1,8 +1,9 @@
 <?php
+	session_start();
 	header("Content-Type: application/json; charset=UTF-8");
-	$conn = new PDO('mysql:host=localhost;dbname=ichang;charset=utf8','root','') or die(mysql_error());	
+	include 'db_connect.php';
 	
-	$query = "select * from user_data";
+	$query = "select * from user_data_".$_SESSION['username'];
 	$result = $conn->query($query) or die(mysql_error());
 	$output = "";
 	while($data = $result -> fetch(PDO::FETCH_ASSOC))

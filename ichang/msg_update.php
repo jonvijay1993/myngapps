@@ -2,8 +2,7 @@
 	$msg = $_GET['msg'];
 	$created = $_GET['created'];
 	
-	$conn = new PDO('mysql:host=localhost;dbname=ichang;charset=utf8','root','') or die(mysql_error());
-	
+	include 'db_connect.php';	
 	//$select = "select * from user_data";
 	//$rowcount = $conn->query($select) or die(mysql_error());
 	//$filenumber = $rowcount->rowCount() + 1;
